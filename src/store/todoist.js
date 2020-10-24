@@ -45,6 +45,10 @@ const mutations = {
   markTaskComplete: (state, taskId) => {
     const taskCompletedIndex = state.tasks.findIndex(task => task.taskId === taskId);
     state.tasks.splice(taskCompletedIndex, 1);
+  },
+
+  removeProjectTasks: (state, projectName) => {
+    state.tasks = state.tasks.filter(task => task.projectName !== projectName)
   }
 }
 
@@ -80,6 +84,10 @@ const actions = {
 
   markTaskComplete: ({ commit }, taskID) => {
     commit('markTaskComplete', taskID)
+  },
+
+  removeProjectTasks: ({ commit }, projectName) => {
+    commit('removeProjectTasks', projectName)
   }
 }
 

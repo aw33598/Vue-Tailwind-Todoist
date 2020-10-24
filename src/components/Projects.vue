@@ -44,7 +44,7 @@
         <div
           class="flex items-center text-gray-500"
           id="delete"
-          @click="removeProject(project.projectId)"
+          @click="removeProject(project.projectId, project.name)"
         >
           <svg
             class="w-4 h-4"
@@ -72,7 +72,7 @@ export default {
   name: "Projects",
   data() {
     return {
-      showProjects: false,
+      showProjects: true,
     };
   },
   components: {
@@ -82,10 +82,11 @@ export default {
     ...mapGetters(["allProjects", "getActiveProject"]),
   },
   methods: {
-    ...mapActions(["deleteProject", "setActiveProject"]),
-    removeProject(projectId) {
+    ...mapActions(["deleteProject", "setActiveProject", "removeProjectTasks"]),
+    removeProject(projectId, projectName) {
       event.stopPropagation();
       this.deleteProject(projectId);
+      this.removeProjectTasks(projectName);
     },
     setProject(projectName) {
       this.setActiveProject(projectName);

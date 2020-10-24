@@ -189,6 +189,7 @@ export default {
         this.isAddingTask = false;
         this.task = "";
         this.selectedDay = null;
+        this.selectedProject = null;
       }
     },
     setSelectedDay(day) {
